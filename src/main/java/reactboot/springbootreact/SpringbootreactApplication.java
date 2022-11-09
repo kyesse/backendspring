@@ -15,7 +15,7 @@ public class SpringbootreactApplication implements CommandLineRunner {
 	}
 
 
-
+        //Criando elementos estáticos para a database H2, apenas para fins de testes dos metodos do springboot (getmapping), e java (findall)etc,  e do axios no frontend.
         @Autowired
 		private reactboot.springbootreact.repositorio.RepositorioUsuarios RepositorioUsuarios;
 		public void run(String... args) throws Exception {

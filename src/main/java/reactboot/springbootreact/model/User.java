@@ -6,14 +6,14 @@ import javax.persistence.*;
 @Entity
 @Table(name="users")
 public class User {
-    /* so um comentario  */
+    /* nao esqueça de formatar com o prettier seguindo as instruções do Iran. */
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    //especificando o atributo da bean para nao reverter para o default
+    //adicionando colunas e demais elementos pra tabela do banco de dados temporario, trabalhando com o H2 database que carreguei nas dependencias do projeto.
     @Column(name="nome")
     private String nome;
     @Column(name="sobrenome")
