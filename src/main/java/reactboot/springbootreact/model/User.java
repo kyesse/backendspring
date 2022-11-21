@@ -6,8 +6,6 @@ import javax.persistence.*;
 @Entity
 @Table(name="users")
 public class User {
-    /* nao esqueça de formatar com o prettier seguindo as instruções do Iran. */
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,7 +51,7 @@ public class User {
 
     }
 
-    public void setNome(){
+    public void setNome(String nome){
           this.nome=nome;
     }
 
@@ -64,7 +62,7 @@ public class User {
     }
 
 
-    public void setSobrenome(){
+    public void setSobrenome(String sobrenome){
          this.sobrenome=sobrenome;
 
     }
@@ -75,7 +73,7 @@ public class User {
 
     }
 
-    public void setEmail(){
+    public void setEmail(String email){
 
         this.email=email;
     }

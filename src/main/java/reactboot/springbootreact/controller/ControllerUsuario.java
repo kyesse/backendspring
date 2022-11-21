@@ -1,12 +1,10 @@
 package reactboot.springbootreact.controller;
 
 
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.*;
+import reactboot.springbootreact.Exception.UserNotFoundException;
 import reactboot.springbootreact.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import reactboot.springbootreact.repositorio.RepositorioUsuarios;
 
 import java.util.List;
@@ -21,6 +19,7 @@ public class ControllerUsuario {
 
    //Validação de objeto
 @Autowired
+
 private RepositorioUsuarios RepositorioUsuarios;
 
 
@@ -30,6 +29,53 @@ public List<User> getUsers(){
    return this.RepositorioUsuarios.findAll();
 
 }
+
+//Criar usuario no banco de dados
+
+    @PostMapping("users")
+    public User criarusuario(@RequestBody User user){
+    return this.RepositorioUsuarios.save(user);
+
+    }
+
+    //Editar usuario ja existente
+
+    @GetMapping("users/{id}")
+    User getUserById(@PathVariable Long id){
+
+    return this.RepositorioUsuarios.findById(id)
+            .orElseThrow(()->new UserNotFoundException(id));
+
+    }
+
+
+    @PutMapping("users/{id}")
+    User updateUsuario(@RequestBody User userEditado,@PathVariable Long id){
+      return this.RepositorioUsuarios.findById(id)
+              .map(User->{
+
+                  User.setNome(userEditado.getNome());
+                  User.setSobrenome(userEditado.getSobrenome());
+                  User.setEmail(userEditado.getEmail());
+                  return this.RepositorioUsuarios.save(User);
+                      } ).orElseThrow(()->new UserNotFoundException(id));
+
+
+    }
+
+    @DeleteMapping("users/{id}")
+    String deletarUsuario(@PathVariable Long id){
+    if(!RepositorioUsuarios.existsById(id)){
+        throw new UserNotFoundException(id);
+            }
+    RepositorioUsuarios.deleteById(id);
+    return "usuario com o id"+id+"deletado com sucesso";
+
+
+
+    }
+
+
 
 
 }

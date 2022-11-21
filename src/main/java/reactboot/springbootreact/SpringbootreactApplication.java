@@ -19,10 +19,10 @@ public class SpringbootreactApplication implements CommandLineRunner {
         @Autowired
 		private reactboot.springbootreact.repositorio.RepositorioUsuarios RepositorioUsuarios;
 		public void run(String... args) throws Exception {
-		this.RepositorioUsuarios.save(new User("Roger","Waters","rgrwaterspf@gmail.com"));
-		this.RepositorioUsuarios.save(new User("Peter","Gabriel","sledgehammer@gmail.com"));
-		this.RepositorioUsuarios.save(new User("Rick","Wakeman","srick.wake77@gmail.com"));
-		this.RepositorioUsuarios.save(new User("Chuck","Berry","MrChuck10@gmail.com"));
+		RepositorioUsuarios.save(new User("Roger","Waters","rgrwaterspf@gmail.com"));
+		RepositorioUsuarios.save(new User("Peter","Gabriel","sledgehammer@gmail.com"));
+		RepositorioUsuarios.save(new User("Rick","Wakeman","srick.wake77@gmail.com"));
+		RepositorioUsuarios.save(new User("Chuck","Berry","MrChuck10@gmail.com"));
 
 	}
 
