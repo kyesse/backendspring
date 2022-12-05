@@ -1,10 +1,10 @@
-package reactboot.springbootreact;
+package appfullstackminicopp.appfullstackminicopp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringbootreactApplicationTests {
+class AppfullstackminicoppApplicationTests {
 
 	@Test
 	void contextLoads() {

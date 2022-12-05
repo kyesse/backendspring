@@ -10,17 +10,17 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import java.util.HashMap;
 import java.util.Map;
 
-@ControllerAdvice
+ @ControllerAdvice
 public class UsuarioNaoEncontradoHandler {
 
 
     @ResponseBody
     @ExceptionHandler(UserNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public Map<String, String> exceptionhandler(UserNotFoundException exception){
+    public Map<String, String> ErrorHandler(UserNotFoundException exception){
 
-        Map<String, String> errorMap=new HashMap<>();
-        errorMap.put("erro de busca",exception.getMessage());
+        Map<String,String> errorMap=new HashMap<>();
+        errorMap.put("ERROX",exception.getMessage());
 
                 return errorMap;
 

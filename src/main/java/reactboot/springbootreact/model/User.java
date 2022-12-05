@@ -1,8 +1,18 @@
 package reactboot.springbootreact.model;
 
 
+import org.springframework.validation.annotation.Validated;
+import reactboot.springbootreact.controller.ControllerUsuario;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
+import org.springframework.validation.Validator;
+
+
+
+
+@Validated
 @Entity
 @Table(name="users")
 public class User {
@@ -12,18 +22,30 @@ public class User {
     private long id;
 
     //adicionando colunas e demais elementos pra tabela do banco de dados temporario, trabalhando com o H2 database que carreguei nas dependencias do projeto.
+
+
+
     @Column(name="nome")
+
+     @NotNull(message="campo nulo")
+    @NotBlank(message="campo nome VAZIO")
     private String nome;
+
+    @NotNull(message="campo nulo")
+    @NotBlank(message="campo sobrenome VAZIO")
     @Column(name="sobrenome")
     private String sobrenome;
 
+    @NotNull(message="campo nulo")
+    @NotBlank(message="campo email VAZIO")
     private String email;
 
     public User(){
 
     }
 
-    public User(String nome, String sobrenome, String email){
+
+    public User( String nome, String sobrenome, String email){
 
         super();
         this.nome=nome;
@@ -52,7 +74,8 @@ public class User {
     }
 
     public void setNome(String nome){
-          this.nome=nome;
+
+        this.nome=nome;
     }
 
 
